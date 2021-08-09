@@ -292,4 +292,4 @@ resultado:
 
 Note que usamos apenas o template sem apontar os indicativos das classes.
 
-![Layout usando grid-template, forma 1](.\assets\img\imgsMD\grid-template1.png)
+![Layout usando grid-template, forma 1](./assets/img/imgsMD/grid-template1.png)
