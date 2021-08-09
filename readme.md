@@ -293,3 +293,51 @@ resultado:
 Note que usamos apenas o template sem apontar os indicativos das classes.
 
 ![Layout usando grid-template, forma 1](./assets/img/imgsMD/grid-template1.png)
+
+forma 2 de se aplicar o css:
+
+```css
+.container {
+  display: grid;
+  grid-template:
+    "logo nav nav"
+    "sidenav content advert"
+    "sidenav footer footer"
+    / 1fr 2fr 1fr;
+  border: 1px solid white;
+  max-width: 400px;
+  margin: 0 auto;
+  margin-top: 100px;
+}
+.item {
+  background-color: tomato;
+  margin: 5px;
+  padding: 5px;
+  font-size: 1.2em;
+  text-align: center;
+}
+
+.logo {
+  grid-area: logo;
+}
+
+.nav {
+  grid-area: nav;
+}
+.sidenav {
+  grid-area: sidenav;
+}
+.content {
+  grid-area: content;
+}
+.advert {
+  grid-area: advert;
+}
+.footer {
+  grid-area: footer;
+}
+```
+
+Resultado:
+
+![Grid-template2](./assets/img/imgsMD/grid-template2.png)
