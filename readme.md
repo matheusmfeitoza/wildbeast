@@ -168,3 +168,100 @@ auto-fit, dará sempre prioridade para as colunas, mesmo que sobre espaço ele i
 </section>
 
 Neste exemplo ele deixou um espaço em branco, onde caso, se tive espaço e entrar mais um elemento div, ele alocará o mesmo.
+
+## grid-template-rows
+
+Utiliza as mesmas propriedades do columns, vamos para os exemplos:
+
+Neste primeiro exemplo iremos utilizar apenas 2 colunas com 2 linhas e iremos alterar os tamanhos das linhas, sendo a primeira com 100px e segunda com 200px;
+
+<section class="grid-fr" style="display:grid; grid-template-columns:1fr 1fr; grid-template-rows:100px 200px; border: 1px solid white; max-width:400px; margin:0 auto;">
+    <div class="item" style="background-color:tomato; text-align: center; font-size: 1.1em; margin: 5px; border: 1px solid black;">1</div>
+    <div class="item" style="background-color:tomato; text-align: center; font-size: 1.1em; margin: 5px; border: 1px solid black;">2</div>
+    <div class="item" style="background-color:tomato; text-align: center; font-size: 1.1em; margin: 5px; border: 1px solid black;">3</div>
+    <div class="item" style="background-color:tomato; text-align: center; font-size: 1.1em; margin: 5px; border: 1px solid black;">4</div>
+</section>
+
+Neste exemplo eu defini um grid columns de 2 colunas e defini um rows com 4 linhas de 100px, porém como o conteúdo já se ajustou em 2 linhas, ele deixara o espaço vazio para o restante que entrar. Note que usamos a propriedade repeat().
+
+<section class="grid-fr" style="display:grid; grid-template-columns:repeat(auto-fit,200px); grid-template-rows:repeat(4,100px); border: 1px solid white; max-width:400px; margin:0 auto;">
+    <div class="item" style="background-color:tomato; text-align: center; font-size: 1.1em; margin: 5px; border: 1px solid black;">1</div>
+    <div class="item" style="background-color:tomato; text-align: center; font-size: 1.1em; margin: 5px; border: 1px solid black;">2</div>
+    <div class="item" style="background-color:tomato; text-align: center; font-size: 1.1em; margin: 5px; border: 1px solid black;">3</div>
+    <div class="item" style="background-color:tomato; text-align: center; font-size: 1.1em; margin: 5px; border: 1px solid black;">4</div>
+</section>
+
+Neste exemplo passamos o repeat() com auti-fill e tamanho de 300px e um minmax de 100px e 1fr
+
+<section class="grid-fr" style="display:grid; grid-template-columns:repeat(auto-fill,250px); grid-template-rows:repeat(4,minmax(100px,1fr)); border: 1px solid white; max-width:400px; margin:0 auto;">
+    <div class="item" style="background-color:tomato; text-align: center; font-size: 1.1em; margin: 5px; border: 1px solid black;">1</div>
+    <div class="item" style="background-color:tomato; text-align: center; font-size: 1.1em; margin: 5px; border: 1px solid black;">2</div>
+    <div class="item" style="background-color:tomato; text-align: center; font-size: 1.1em; margin: 5px; border: 1px solid black;">3</div>
+    <div class="item" style="background-color:tomato; text-align: center; font-size: 1.1em; margin: 5px; border: 1px solid black;">4</div>
+</section>
+
+## Grid template areas
+
+Define as áreas do site.
+
+Como usar:
+
+```html
+<section class="container">
+  <div class="item logo">Logo</div>
+  <div class="item nav">nav</div>
+  <div class="item sidenav">sidenav</div>
+  <div class="item content">content</div>
+  <div class="item advert">advert</div>
+  <div class="item footer">footer</div>
+</section>
+```
+
+```css
+body {
+  background-color: black;
+  color: white;
+}
+.container {
+  display: grid;
+  grid-template-areas:
+    "logo nav nav"
+    "sidenav content advert"
+    "sidenav footer footer";
+  border: 1px solid white;
+  max-width: 400px;
+  margin: 0 auto;
+  margin-top: 100px;
+}
+.item {
+  background-color: tomato;
+  margin: 5px;
+  padding: 5px;
+  font-size: 1.2em;
+  text-align: center;
+}
+
+.logo {
+  grid-area: logo;
+}
+
+.nav {
+  grid-area: nav;
+}
+.sidenav {
+  grid-area: sidenav;
+}
+.content {
+  grid-area: content;
+}
+.advert {
+  grid-area: advert;
+}
+.footer {
+  grid-area: footer;
+}
+```
+
+Vamos aplicar este layor na prática:
+
+![Layot usando grid areas](./assets/img/imgsMD/grid-areas.png);
