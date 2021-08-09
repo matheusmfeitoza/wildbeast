@@ -264,4 +264,32 @@ body {
 
 Vamos aplicar este layor na prática:
 
-![Layot usando grid areas](./assets/img/imgsMD/grid-areas.png);
+![Layot usando grid areas](./assets/img/imgsMD/grid-areas.png)
+
+## Grid template
+
+É a junção dos 3 elementos que vimos anteriormente, mais conhecido como shortcut, veremos exemplos:
+
+```html
+<section class="container">
+  <div class="item logo">Logo</div>
+  <div class="item nav">nav</div>
+  <div class="item sidenav">sidenav</div>
+  <div class="item content">content</div>
+  <div class="item advert">advert</div>
+  <div class="item footer">footer</div>
+</section>
+```
+
+Forma 1 de se aplicar o css:
+
+```css
+display: grid;
+grid-template: 50px 50px 50px / repeat(2, 1fr); /* Primeiro as linhas, depois colunas */
+```
+
+resultado:
+
+Note que usamos apenas o template sem apontar os indicativos das classes.
+
+![Layout usando grid-template, forma 1](assets\img\imgsMD\grid-template1.png)
