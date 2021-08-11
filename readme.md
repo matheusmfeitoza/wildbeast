@@ -341,3 +341,176 @@ forma 2 de se aplicar o css:
 Resultado:
 
 ![Grid-template2](./assets/img/imgsMD/grid-template2.png)
+
+### Grid GAP
+
+gap: define um espaçamento entre os elementos do grid;
+
+OBS: A margem influencia diretamente no item;
+
+Temos as variações para grid-gap-columns e grid-gap-rows, respectivamente, um afeta as colunas e outro afeta as linhas;
+
+Exemplo de código:
+
+HTML:
+
+```html
+<section class="container">
+  <div class="item logo">Logo</div>
+  <div class="item nav">nav</div>
+  <div class="item sidenav">sidenav</div>
+  <div class="item content">content</div>
+  <div class="item advert">advert</div>
+  <div class="item footer">footer</div>
+</section>
+```
+
+CSS:
+
+```css
+.container {
+  display: grid;
+  grid-template:
+    "logo nav nav"
+    "sidenav content advert"
+    "sidenav footer footer"
+    / 1fr 2fr 1fr;
+  border: 1px solid white;
+  max-width: 400px;
+  margin: 0 auto;
+  margin-top: 100px;
+  gap: 5px;
+}
+.item {
+  background-color: tomato;
+  padding: 5px;
+  font-size: 1.2em;
+  text-align: center;
+}
+
+.logo {
+  grid-area: logo;
+}
+
+.nav {
+  grid-area: nav;
+}
+.sidenav {
+  grid-area: sidenav;
+}
+.content {
+  grid-area: content;
+}
+.advert {
+  grid-area: advert;
+}
+.footer {
+  grid-area: footer;
+}
+```
+
+Resultado:
+
+![Grid gap ](./assets/img/imgsMD/grid-gap.png)
+
+O gap, também pode ser usado como shorthand para as variações:
+
+gap: 20px 20px; afetando primeiro a linha e depois a coluna.
+
+## Grid Auto Columns
+
+Define o tamaho das columas implicitas; **Columas implicitas são geradas automaticamentes, caso ocorra esta necessidade**.
+
+## Grid Auto Rows
+
+Define a linha do grid implicita. **Linhas implicitas são geradas automaticamente, caso ocorra esta necessidade**.
+
+## Grid Auto Flow
+
+Define o fluxo padrão da criação de novos itens;
+
+Por padrão os itens novos criados, são gerados em uma nova linha, mas podemos alterar a maneira como isto se comporta com o grid-auto-flow;
+
+Valores:
+
+grid-auto-flow:column; Define o valor para colunas
+
+grid-auto-flow:dense; Define o valor para se ajustar de acordo com os espaços disponíveis. Utilizado em casos que não importa a ordem.
+
+# Grid Item
+
+## Grid Column
+
+Podemos inserir um valor para item da coluna diretamente, definir sua posição, alterar comportamentos e etc, tudo isto usando o grid-column
+
+Vamos ver abaixo alguns exemplos:
+
+- Definindo a posição de um item:
+
+HTML:
+
+```html
+<section class="container">
+  <div class="item item1">1</div>
+  <div class="item item2">2</div>
+  <div class="item item3">3</div>
+  <div class="item item4">4</div>
+  <div class="item item5">5</div>
+</section>
+```
+
+```css
+body {
+  background-color: black;
+  color: white;
+}
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  /*   grid-template:"logo nav nav"
+    "sidenav content advert"
+    "sidenav footer footer"
+    / 1fr 2fr 1fr; */
+  border: 1px solid white;
+  max-width: 400px;
+  margin: 0 auto;
+  margin-top: 100px;
+  /*   gap:5px; */
+  grid-column-gap: 5px;
+  grid-row-gap: 5px;
+  grid-auto-rows: 50px;
+}
+.item {
+  background-color: tomato;
+  padding: 5px;
+  /*   margin:5px; */
+  font-size: 1.2em;
+  text-align: center;
+}
+
+.item1 {
+  grid-column: 1/4;
+}
+```
+
+Exemplo 1: Este usei o grid-colum, no item 1, onde falo que ele irá pegar da coluna 1 e vai até o final dela:
+
+![Grid Column, exemplo 1](./assets/img/imgsMD/grid-column1.png)
+
+Se reparar no código, vai estar assim:
+
+```css
+.item1 {
+  grid-column: 1/4;
+}
+```
+
+Isto se da pelo fato de tratarmos as columas também com linhas iniciais e finais, a imagem abaixo irá ajudar na representação, mas para sem mais fácil de lembrar, sempre lembre que **Se você declarou um grid com 5 colunas, as linhas da colunas serão 6, sempre some 1 linha de coluna no total de número de colunas**.
+
+![grid-column example rows](./assets/img/imgsMD/grid-column-example.png)
+
+Neste próximo exemplo, usei o **span**, uma propriedade que define o tamanho que o item ocupará, como exemplo informei que o item2, ocupara as 3 colunas. Consigo também usar a **/** para dizer onde o item começará, em qual linha e especificar o **span** dele.
+
+![grid-column exemplo 2](./assets/img/imgsMD/grid-column2.png)
+
+## grid-row
