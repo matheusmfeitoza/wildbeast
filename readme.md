@@ -514,3 +514,83 @@ Neste próximo exemplo, usei o **span**, uma propriedade que define o tamanho qu
 ![grid-column exemplo 2](./assets/img/imgsMD/grid-column2.png)
 
 ## grid-row
+
+Define quais linhas serão ocupadas pelo grid item.
+
+Atenção aqui, pois esse linha é referente a row. Porém as chamadas grid lines que por tradução também significam linhas do grid, são diferentes. Uma row (linha), possui sempre 2 grid lines (linhas do grid), uma no início dela e uma no final dela.
+
+Segue abaixo alguns exemplos de uso:
+
+HTML:
+
+```html
+<section class="container">
+  <div class="item item1">1</div>
+  <div class="item item2">2</div>
+  <div class="item item3">3</div>
+  <div class="item item4">4</div>
+  <div class="item item5">5</div>
+</section>
+```
+
+CSS:
+
+```css
+body {
+  background-color: black;
+  color: white;
+}
+.container {
+  display: grid;
+  grid-template-columns: [col1]1fr [col2]1fr [col3]1fr;
+  grid-template-rows: [row1]1fr [row2]1fr [row3]1fr;
+  /*   grid-template:"logo nav nav"
+    "sidenav content advert"
+    "sidenav footer footer"
+    / 1fr 2fr 1fr; */
+  border: 1px solid white;
+  max-width: 400px;
+  margin: 0 auto;
+  margin-top: 100px;
+  /*   gap:5px; */
+  grid-column-gap: 5px;
+  grid-row-gap: 5px;
+  grid-auto-rows: 50px;
+  grid-auto-columns: 50px;
+}
+.item {
+  background-color: tomato;
+  padding: 5px;
+  /*   margin:5px; */
+  font-size: 1.2em;
+  text-align: center;
+}
+
+.container .item1 {
+  grid-row: 1/3;
+}
+
+.container .item2 {
+  grid-row: span 3;
+}
+
+.container .item3 {
+  grid-row: row1/row3;
+}
+```
+
+Neste exemplo apliquei o grid-row no item 1 ao item 3;
+
+No item 1, falei que ele vai pegar da grid-row 1 até a 3;
+
+No item 2, falei que ele deverá ocupar 3 "casas" com o span;
+
+No item 3, usei os apelidos, que denominei no grid-template-row, para determinar onde uma linha começa e onde acaba.
+
+Segue exemplo:
+
+![Grid row example](./assets/img/imgsMD/grid-row.png)
+
+Note que neste exemplo temos apenas 3 linhas;
+
+Agora iremos para a construção do site, Wildbeast!!
