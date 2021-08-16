@@ -37,6 +37,30 @@ img {
     "footer footer footer";
 }
 
+@media (max-width:1200px){
+  .grid-estrutura{
+    grid-template-areas:
+    "header header header"
+    "sidenav content content"
+    "sidenav anuncios anuncios"
+    "footer footer footer"
+    ;
+  }
+}
+
+@media (max-width:760px){
+  .grid-estrutura{
+    grid-template-columns: 100%;
+    grid-template-areas: 
+    "header"
+    "sidenav"
+    "content"
+    "anuncios"
+    "footer"
+    ;
+  }
+}
+
 /* Header */
 .header {
   grid-area: header;
@@ -68,7 +92,18 @@ img {
 .header nav li + li {
   margin-left: 30px;
 }
+@media (max-width: 760px){
+  .header{
+  grid-template-columns: auto;
+  }
 
+  .header .logo{
+    margin-bottom: 15px;
+  }
+  .header nav li + li {
+    margin-left: 10px;
+  }
+}
 /* Sidenav */
 
 .sidenav {
@@ -92,6 +127,43 @@ img {
   background: #b07dfb;
 }
 
+@media (max-width: 760px){
+
+  @keyframes seta{
+    from{
+      right: 30px;
+    }
+    to{
+      right: 20px;
+    }
+  }
+    
+  
+  .sidenav{
+    position: relative;
+    overflow-x: auto;
+    padding: 0 30px;
+    color: rgba(0, 0, 0, .3);
+  }
+  .sidenav::after{
+    content: "→";
+    position: absolute;
+    top: 5px;
+    right: 30px;
+    margin-bottom: 5px;
+    animation: seta .5s ease-in 0s infinite alternate;
+  }
+  .sidenav ul{
+    display: flex;
+  }
+  .sidenav li{
+    flex: 1 0 60px;
+  }
+  .sidenav li a{
+    margin: 30px 30px 30px 0;
+  }
+}
+
 /* Conteúdo */
 .content {
   grid-area: content;
@@ -101,6 +173,11 @@ img {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 30px;
+}
+@media (max-width:600px){
+  .content{
+  grid-template-columns: auto;
+  }
 }
 .col-wide {
   grid-column: 1 / -1;
@@ -215,6 +292,7 @@ img {
   align-content: start;
   padding: 30px;
   gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(150px,1fr));
 }
 
 /* Footer */
